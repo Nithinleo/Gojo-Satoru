@@ -1345,7 +1345,8 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
                 GojoMdNx.sendMessage(m.chat, reactionMessage)
             }
             break  
-            case 'join': {
+            /*
+	    case 'join': {
                 if (!isCreator) return replay(`${mess.owner}`)
                 if (!text) return replay(`Enter The Group Link!`)
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return replay(`Invalid Link!`)
@@ -1353,7 +1354,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
                 await GojoMdNx.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
-            break
+            break */
             case 'leave': {
                 if (!isCreator) return replay(`${mess.owner}`)
                 await GojoMdNx.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -1782,7 +1783,7 @@ break
                 reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
             }
             break
-            case 'bc': case 'broadcast': case 'bcall': {
+            /*case 'bc': */ case 'broadcast': case 'bcall': {
                 if (!isCreator) return replay(`${mess.owner}`)
                 if (!text) return replay(`Where Is The Text?\n\nExample : ${prefix + command} Nexus`)
                 let anu = await store.chats.all().map(v => v.id)
@@ -2289,7 +2290,7 @@ case 'webtonsearch': case 'webtoon':
                 GojoMdNx.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-            case 'wallpaper': {
+        /*    case 'wallpaper': {
                 if (!text) return reply(`Enter Query Title`)
 		let { wallpaper } = require('./lib/scraper')
                 anu = await wallpaper(text)
@@ -2306,7 +2307,7 @@ case 'webtonsearch': case 'webtoon':
                 }
                 GojoMdNx.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
-            break
+            break  */
             case 'wikimedia': {
                 if (!text) return reply(`Enter Query Title`)
 		let { wikimedia } = require('./lib/scraper')
@@ -2730,24 +2731,24 @@ case 'webtonsearch': case 'webtoon':
                 GojoMdNx.sendMessage(m.chat, { audio: { url: anu.result.audio }, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	        case 'instagramx': case 'igx': case 'igdlx': {
+	case 'instagramx': case '-ig': case 'igx': case 'igdlx': {
                 if (!text) return reply(`No Query Url!`)
                 reply(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
-                    let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'apikey'))
+                    let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, '48475f7b4b'))
                     for (let media of anu.data) GojoMdNx.sendMedia(m.chat, media, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
                 } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
-                    let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'apikey'))
+                    let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, '48475f7b4b'))
                     GojoMdNx.sendMedia(m.chat, anu.media[0].url, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
                 }
             }
             break
 		//Backup, for example, the video above doesn't come out\\
-		case 'igeh': case 'instagram2x': case 'ig2': case 'igdl2': {
+		case 'igeh': case 'instagram2x': case '-ig2': case 'igdl2': {
                 if (!text) return reply(`Enter Query Link!`)
                 reply(mess.wait)
                 
-                let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url:text }, 'apikey'))
+                let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url:text }, '48475f7b4b'))
                 GojoMdNx.sendMessage(m.chat, { video: { url: anu.data[0] } }, { quoted: m })
             }
             break
@@ -2762,7 +2763,7 @@ case 'webtonsearch': case 'webtoon':
             case 'soundcloud': case 'scdl': {
                 if (!text) return reply(`No Query Title`)
                 reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'apikey'))
+                let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, '48475f7b4b'))
                 let msg = await GojoMdNx.sendImage(m.chat, anu.result.thumb, `🐦 Title : ${anu.result.title}\n🐦 Url : ${isUrl(text)[0]}`)
                 GojoMdNx.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
@@ -2805,7 +2806,7 @@ case 'webtonsearch': case 'webtoon':
 	        case 'fbdlx': case 'fbx': case 'facebookx': {
                 if (!text) return reply(`Enter Query Link!`)
                 reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'apikey'))
+                let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, '48475f7b4b'))
                 GojoMdNx.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🐦 Title : ${anu.result.title}`}, { quoted: m })
             }
             break
@@ -3293,11 +3294,13 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./GojoMedia/gojo.jpg')},
                             hydratedFooterText: `┌─❖
+╔═.✵.═══ GiveAwaYs WorlD ═══════╗
+│
 │「 Hey there! 👋 」
 └┬❖ 「 ${pushname} 」
 ┌┤✑  Hope your having a Good day🎉
 ││✑  🐦🖐️!!
-│└───────────────┈ ⳹
+│»»———— ★ ———————————— ★ ————-««
 │ 「 ✦ ── BOT INFO ── ✦ 」
 │✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
@@ -3307,7 +3310,9 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │✙ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
 │✙ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
 │✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length}
-└┬──────────────┈ ⳹
+│
+╚═══════ GiveAwaYs WorlD ═══.✵.═╝
+
    │✑  Please Select The Button Below
    └───────────────┈ ⳹`,
                             hydratedButtons: [{
@@ -3353,11 +3358,12 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./GojoMedia/gojo.jpg')}, 
                             hydratedFooterText: `
+╔═.✵.═══ GiveAwaYs WorlD ═══════╗
 ┌─❖
 │「 ✦ ── Hi! 👋 ── ✦ 」
 └┬❖ 「 ${pushname} 」
 ┌┤
-│└───────────────┈ ⳹
+│»»———— ★ ———————————— ★ ————-««
 │ 「 ✦ ── BOT INFO ── ✦ 」
 │✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
@@ -3367,7 +3373,9 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │✙ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
 │✙ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
 │✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length}
-└┬──────────────┈ ⳹
+│
+╚═══════ GiveAwaYs WorlD ═══.✵.═╝
+
    │✑  Please Select The Button Below
    └───────────────┈ ⳹`,
                             hydratedButtons: [{
@@ -3554,7 +3562,6 @@ case 'allmenu': {
 ┃╠ ${prefix}report [bug]
 ┃╠══✪「 ✦ ── OWNER ── ✦ 」 ☯︎
 ┃╠ ${prefix}chat [option]
-┃╠ ${prefix}join [link]
 ┃╠ ${prefix}leave
 ┃╠ ${prefix}block [user]
 ┃╠ ${prefix}unblock [user]
@@ -3584,6 +3591,8 @@ case 'allmenu': {
 ┃╠${prefix}checkvote
 ┃╠${prefix}delvote
 ┃╠═✪「 ✦ ── DOWNLOADER ── ✦ 」☯︎
+┃╠${prefix}-ig [url]
+┃╠${prefix}-ig2 [url]
 ┃╠${prefix}ytmp3 [url|quality]
 ┃╠${prefix}ytmp4 [url|quality]
 ┃╠${prefix}getmusic [yt link]
@@ -3598,11 +3607,8 @@ case 'allmenu': {
 ┃╠${prefix}google [query]
 ┃╠${prefix}gimage [query]
 ┃╠${prefix}pinterest [query]
-┃╠${prefix}wallpaper [query]
 ┃╠${prefix}wikimedia [query]
 ┃╠${prefix}ytsearch [query]
-┃╠${prefix}ringtone [query]
-┃╠${prefix}webtoon [query]
 ┃╠═══✪「 ✦ ── CONVERTER ── ✦ 」 ☯︎
 ┃╠ ${prefix}toimage [reply stick]
 ┃╠ ${prefix}sticker [reply img|gif]
@@ -3886,7 +3892,9 @@ case 'downloadmenu':
 var unicorn = await getBuffer(picak+'Downloader Menu')
 await GojoMdNx.send5ButImg(from, `` + '' + ' ', `
 ┏━「 ✦ ── ${botname} ── ✦ 」━━⭓ 
-┃╔═✪「 ✦ ── DOWNLOADER ── ✦ 」	        
+┃╔═✪「 ✦ ── DOWNLOADER ── ✦ 」
+┃╠${prefix}-ig [url]
+┃╠${prefix}-ig2 [url]
 ┃╠${prefix}ytmp3 [url|quality]
 ┃╠${prefix}ytmp4 [url|quality]
 ┃╠${prefix}getmusic [yt link]
@@ -3908,7 +3916,6 @@ await GojoMdNx.send5ButImg(from, `` + '' + ' ', `
 ┃╠${prefix}google [query]
 ┃╠${prefix}gimage [query]
 ┃╠${prefix}pinterest [query]
-┃╠${prefix}wallpaper [query]
 ┃╠${prefix}wikimedia [query]
 ┃╠${prefix}ytsearch [query]
 ┃╠${prefix}ringtone [query]
