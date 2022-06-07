@@ -3436,7 +3436,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 										"description": "Displays The List Of All The Features!",
 										"rowId": `${prefix}allmenu`
 									},
-									{
+									/*{
 										"title": "Owner Menu",
 										"description": "Displays The List Of Owner Features",
 										"rowId": `${prefix}ownermenu`
@@ -3446,7 +3446,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 										"description": "Displays The List Of Main Features",
 										"rowId": `${prefix}groupmenu`
 										},
-									/*{
+									{
 										"title": "Rpg Menu",
 										"description": "Displays The List Of Rpg Features",
 										"rowId": `${prefix}rpgmenu`
@@ -3560,36 +3560,11 @@ case 'allmenu': {
 ┃╠ ${prefix}listgc
 ┃╠ ${prefix}donate
 ┃╠ ${prefix}report [bug]
-┃╠══✪「 ✦ ── OWNER ── ✦ 」 ☯︎
-┃╠ ${prefix}chat [option]
-┃╠ ${prefix}leave
-┃╠ ${prefix}block [user]
-┃╠ ${prefix}unblock [user]
-┃╠ ${prefix}bcgroup [text]
-┃╠ ${prefix}bcall [text]
-┃╠ ${prefix}setppbot [image]
-┃╠ ${prefix}setexif
 ┃╠══✪「 ✦ ── GROUP ── ✦ 」 ☯︎      
 ┃╠${prefix}grouplink
-┃╠${prefix}ephemeral [option]
-┃╠${prefix}setgcpp [image]
-┃╠${prefix}setname [text]
-┃╠${prefix}setdesc [text]
-┃╠${prefix}group [text]
-┃╠${prefix}editinfo [option]
+┃╠${prefix}group [open/close]
 ┃╠${prefix}add [user]
 ┃╠${prefix}kick [reply/tag]
-┃╠${prefix}hidetag [text]
-┃╠${prefix}tagall [text]
-┃╠${prefix}antilink [on/off]
-┃╠${prefix}mute [on/off]
-┃╠${prefix}promote [reply/tag]
-┃╠${prefix}demote [reply/tag]
-┃╠${prefix}vote
-┃╠${prefix}devote
-┃╠${prefix}upvote
-┃╠${prefix}checkvote
-┃╠${prefix}delvote
 ┃╠═✪「 ✦ ── DOWNLOADER ── ✦ 」☯︎
 ┃╠${prefix}ytmp3 [url|quality]
 ┃╠${prefix}ytmp4 [url|quality]
@@ -3762,7 +3737,6 @@ await GojoMdNx.send5ButImg(from, `` + '' + ' ', `
 ┏━「 ✦ ── ${botname} ── ✦ 」━━⭓ 
 ┃╔═✪「 ✦ ── GROUP ── ✦ 」	        
 ┃╠${prefix}grouplink
-┃╠${prefix}ephemeral [option]
 ┃╠${prefix}setgcpp [image]
 ┃╠${prefix}setname [text]
 ┃╠${prefix}setdesc [text]
@@ -3860,27 +3834,15 @@ case 'ownermenu':
 var unicorn = await getBuffer(picak+'Owner Menu')
 await GojoMdNx.send5ButImg(from, `` + '' + ' ', `
 ┏━「 ✦ ── ${botname} ── ✦ 」━━⭓ 
-┃╔═✪「 ✦ ── OWNER ── ✦ 」	        
-┃╠${prefix}grouplink
-┃╠${prefix}ephemeral [option]
-┃╠${prefix}setgcpp [image]
-┃╠${prefix}setname [text]
-┃╠${prefix}setdesc [text]
-┃╠${prefix}group [text]
-┃╠${prefix}editinfo [option]
-┃╠${prefix}add [user]
-┃╠${prefix}kick [reply/tag]
-┃╠${prefix}hidetag [text]
-┃╠${prefix}tagall [text]
-┃╠${prefix}antilink [on/off]
-┃╠${prefix}mute [on/off]
-┃╠${prefix}promote [reply/tag]
-┃╠${prefix}demote [reply/tag]
-┃╠${prefix}vote
-┃╠${prefix}devote
-┃╠${prefix}upvote
-┃╠${prefix}checkvote
-┃╠${prefix}delvote
+┃╔═✪「 ✦ ── OWNER ── ✦ 」	   
+┃╠ ${prefix}chat [option]
+┃╠ ${prefix}leave
+┃╠ ${prefix}block [user]
+┃╠ ${prefix}unblock [user]
+┃╠ ${prefix}bcgroup [text]
+┃╠ ${prefix}bcall [text]
+┃╠ ${prefix}setppbot [image]
+┃╠ ${prefix}setexif
 ┃╚═════════════✪
 ┗━━「 ${pushname} 」━⭓`,unicorn, [{"urlButton": {"displayText": "YouTube📍","url": `${myweb}`}},{"urlButton": {"displayText": "Script🔖","url": `${sc}`}},{"quickReplyButton": {"displayText": "🍜Donate🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "👤Owner👤","id": 'owner'}}] )
 break
