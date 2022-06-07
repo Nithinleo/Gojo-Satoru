@@ -61,7 +61,7 @@
     "lib": "lib",
     "src": "src"
   },
-  "devDependencies": {},
+  "devDependencies": {"dotenv": "^16.0.0"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nexusNw/Gojo-Satoru.git"
