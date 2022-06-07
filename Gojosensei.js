@@ -3293,12 +3293,12 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./GojoMedia/gojo.jpg')},
                             hydratedFooterText: `┌─❖
-│「 Hi 👋 」
+│「 Hey there! 👋 」
 └┬❖ 「 ${pushname} 」
-┌┤✑  Shashi burina thaicho🎉
+┌┤✑  Hope your having a Good day🎉
 ││✑  🐦🖐️!!
 │└───────────────┈ ⳹
-│ 「 BOT INFO 」
+│ 「 ✦ ── BOT INFO ── ✦ 」
 │✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
 │✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
@@ -3354,11 +3354,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             jpegThumbnail: fs.readFileSync('./GojoMedia/gojo.jpg')}, 
                             hydratedFooterText: `
 ┌─❖
-│「 Hi 👋 」
+│「 ✦ ── Hi! 👋 ── ✦ 」
 └┬❖ 「 ${pushname} 」
-┌┤✑  Daijobka sempai?😄
+┌┤
 │└───────────────┈ ⳹
-│ 「 BOT INFO 」
+│ 「 ✦ ── BOT INFO ── ✦ 」
 │✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
 │✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
@@ -3499,7 +3499,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 										"rowId": `${prefix}horoscopemenu`
 										}*/
 								]
-							},
+							}/*,
 							{
 								"title": "Chat With Fellow Users",
 								"rows": [
@@ -3510,7 +3510,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 									}
 								]
 							}
-							/*,{
+							,{
 								"title": "Credit",
 								"rows": [
 									{
