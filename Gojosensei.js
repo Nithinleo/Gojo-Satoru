@@ -1872,7 +1872,7 @@ break
 {   
         if (!quoted) return reply(`Reply with Image`)
         reply(mess.wait)
-        if (/image/.test(mine)){
+        if (/image/.test(mime)){
             let media = await quoted.download()
             let ran = await getRandom('.jpeg')
             getRemoveBg(media).then(() => {
