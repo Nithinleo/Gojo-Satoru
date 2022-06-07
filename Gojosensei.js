@@ -1868,6 +1868,24 @@ break
                     GojoMdNx.sendText(m.chat, 'Online List:\n\n' + online.map(v => '🐦 @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
              break
+	    case 'removebg':
+{   
+        if (!quoted) return reply(`Reply with Image`)
+        reply(mess.wait)
+        if (/image/.test(mine)){
+            let media = await quoted.download()
+            let ran = await getRandom('.jpeg')
+            getRemoveBg(media).then(() => {
+                fs.unlinkSync(media)
+                if (err) reply(err)
+                let buffer = fs.readFileSync(ran)
+                GojoMdNx.sendMessage(m.chat, { image: buffer, mimetype: 'image/png', caption:`*Removed!!*`}, { quoted: m })
+                fs.unlinkSync(ran)
+                })
+        }
+        else {reply(`Error occured`)}
+}
+	break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) return replay(`Reply Video/Image With Caption ${prefix + command}`)
             reply(mess.wait)
