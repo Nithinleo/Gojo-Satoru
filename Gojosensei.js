@@ -2731,7 +2731,7 @@ case 'webtonsearch': case 'webtoon':
                 GojoMdNx.sendMessage(m.chat, { audio: { url: anu.result.audio }, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	case 'instagramx': case '-ig': case 'igx': case 'igdlx': {
+/*	case 'instagramx': case '-ig': case 'igx': case 'igdlx': {
                 if (!text) return reply(`No Query Url!`)
                 reply(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
@@ -2751,7 +2751,7 @@ case 'webtonsearch': case 'webtoon':
                 let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url:text }, '48475f7b4b'))
                 GojoMdNx.sendMessage(m.chat, { video: { url: anu.data[0] } }, { quoted: m })
             }
-            break
+            break  */
             case 'joox': case 'jooxdl': {
                 if (!text) return reply(`No Query Title`)
                 reply(mess.wait)
@@ -3292,7 +3292,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./GojoMedia/gojo.jpg')},
+                            jpegThumbnail: fs.readFileSync('./GojoMedia/gwbot.jpg')},
                             hydratedFooterText: `┌─❖
 ╔═.✵.═══ GiveAwaYs WorlD ═══════╗
 │
@@ -3356,7 +3356,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./GojoMedia/gojo.jpg')}, 
+                            jpegThumbnail: fs.readFileSync('./GojoMedia/gwbot.jpg')}, 
                             hydratedFooterText: `
 ╔═.✵.═══ GiveAwaYs WorlD ═══════╗
 ┌─❖
@@ -3591,14 +3591,10 @@ case 'allmenu': {
 ┃╠${prefix}checkvote
 ┃╠${prefix}delvote
 ┃╠═✪「 ✦ ── DOWNLOADER ── ✦ 」☯︎
-┃╠${prefix}-ig [url]
-┃╠${prefix}-ig2 [url]
 ┃╠${prefix}ytmp3 [url|quality]
 ┃╠${prefix}ytmp4 [url|quality]
 ┃╠${prefix}getmusic [yt link]
 ┃╠${prefix}getvideo [yt link]
-┃╠${prefix}umma [query]
-┃╠${prefix}joox [query]
 ┃╠${prefix}soundcloud [url]
 ┃╠══✪「 ✦ ── SEARCHER ── ✦ 」 ☯︎
 ┃╠${prefix}play [query]
@@ -3893,8 +3889,6 @@ var unicorn = await getBuffer(picak+'Downloader Menu')
 await GojoMdNx.send5ButImg(from, `` + '' + ' ', `
 ┏━「 ✦ ── ${botname} ── ✦ 」━━⭓ 
 ┃╔═✪「 ✦ ── DOWNLOADER ── ✦ 」
-┃╠${prefix}-ig [url]
-┃╠${prefix}-ig2 [url]
 ┃╠${prefix}ytmp3 [url|quality]
 ┃╠${prefix}ytmp4 [url|quality]
 ┃╠${prefix}getmusic [yt link]
