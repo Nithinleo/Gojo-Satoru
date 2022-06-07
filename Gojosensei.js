@@ -16,6 +16,9 @@ const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 const nexusnw = require('xfarr-api')
 
+//removebg
+const { getRemoveBg } = require('./removebg');
+
 //rpg function\\
    const { 
      addInventoriDarah, 
