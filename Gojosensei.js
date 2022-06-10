@@ -1409,12 +1409,12 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
 		await GojoMdNx.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
-        case 'unblock': {
+       /* case 'unblock': {
 		if (!isCreator) return replay(`${mess.owner}`)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await GojoMdNx.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
-	break
+	break*/
 	    case 'setname': case 'setgcname': case 'setsubject': {
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
@@ -3304,7 +3304,62 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
-                     case 'alive': case 'bot':{
+                     case 'alive':{
+                           	timestampe = speed();
+latensie = speed() - timestampe
+ anu = ` `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./GojoMedia/gwbot.jpg')},
+                            hydratedFooterText: `┌─❖
+╔═.✵.═══ GiveAwaYs WorlD ═══════╗
+│			
+│      「 Hey there! 👋 」      
+│	「 ${pushname} 」
+│»»————— ★ ——————————— ★ —————««
+│
+│ 「 ✦ ── ${global.botname} IS ALIVE  ── ✦ 」
+│
+╚═══════ GiveAwaYs WorlD ═══.✵.═╝
+
+「 Please Select The Button Below 」
+  `,
+                            hydratedButtons: [/*{
+                                urlButton: {
+                                    displayText: 'YouTube📍',
+                                    url: `${myweb}`
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script🔖',
+                                    url: `${sc}`
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: '🍇All Menu🍇',
+                                    id: `${prefix}allmenu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '🍒List Menu🍒',
+                                    id: `${prefix}command`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner👤',
+                                    id: `${prefix}owner`
+                                }
+                            }*/]
+                        }
+                    }
+                }), { userJid: m.chat })
+                GojoMdNx.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                }
+break
+		case 'bot':{
                            	timestampe = speed();
 latensie = speed() - timestampe
  anu = ` `
@@ -3368,7 +3423,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 GojoMdNx.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 }
 break
-            case 'list': case 'menu': {
+       /*     case 'list': case 'menu': {
             	timestampe = speed();
 latensie = speed() - timestampe
                 anu = ``
@@ -3430,11 +3485,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 }), { userJid: m.chat })
                 GojoMdNx.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 }
-                break
-                case 'command': {
+                break*/
+	case 'command': case 'menu':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
-                    title: `Hi ${pushname}`,
+                    title: `Hey! ${pushname}`,
                     description: `Please Choose The Menu\n\n`,
                     buttonText: "Menu",
                     footerText: `${global.footer}`,
@@ -3564,7 +3619,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
                 reply(`GitHub : https://github.com/Nithinleo/Gojo-Satoru\n Dont Forget To Give Star\n\nYouTube : ${myweb}\nDont Forget To Watch Tutorial`)
             }
             break
-case 'allmenu': {
+case 'allmenu': case 'list' : {
   	anu = `
 ┏━「 ✦ ── *${botname}* ── ✦ 」━━⭓ 
 ┃╔══☯︎「 ✦ ── MAIN ── ✦ 」☯︎
