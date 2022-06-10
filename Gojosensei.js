@@ -17,7 +17,7 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const nexusnw = require('xfarr-api')
 
 //removebg
-const { getRemoveBg } = require('./removebg');
+const { getRemoveBg } = require('./removebg.js');
 
 //rpg function\\
    const { 
