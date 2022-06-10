@@ -3317,16 +3317,13 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedFooterText: `┌─❖
 ╔═.✵.═══ GiveAwaYs WorlD ═══════╗
 │			
-│      「 Hey there! 👋 」      
-│	「 ${pushname} 」
+│  Hey there! 👋「 ${pushname} 」
+│
 │»»————— ★ ——————————— ★ —————««
 │
-│ 「 ✦ ── ${global.botname} IS ALIVE  ── ✦ 」
+│ ✦ ── ${global.botname} IS ALIVE  ── ✦
 │
-╚═══════ GiveAwaYs WorlD ═══.✵.═╝
-
-「 Please Select The Button Below 」
-  `,
+╚═══════ GiveAwaYs WorlD ═══.✵.═╝`,
                             hydratedButtons: [/*{
                                 urlButton: {
                                     displayText: 'YouTube📍',
